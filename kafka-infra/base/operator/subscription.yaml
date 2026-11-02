@@ -6,7 +6,7 @@ metadata:
 spec:
   channel: stable
   installPlanApproval: Automatic
-  name: amq-streams
-  source: cs-redhat-operator-index-v4-22-179306
+  name: {{NOMBRE_OPERADOR}}
+  source: {{NOMBRE_CATALOGO_DESCONECTADO}}
   sourceNamespace: openshift-marketplace
 
