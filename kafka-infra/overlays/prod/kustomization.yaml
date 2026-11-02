@@ -10,7 +10,7 @@ patches:
   # Use persistent storage in production
   - patch: |-
       - op: replace
-        path: /spec/kafka/storage
+        path: {{PATH}}
         value:
           type: persistent-claim
           size: {{SIZE}}
@@ -20,6 +20,6 @@ patches:
       name: kafka-cluster
 
 commonLabels:
-  environment: prod
+  environment: {{AMBIENTE}}
   strimzi.io/cluster: kafka-cluster
 
