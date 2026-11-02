@@ -7,32 +7,29 @@ metadata:
     app.kubernetes.io/part-of: kafka-infra
 spec:
   replicas: 3
-  roles:
-    - controller
-    - broker
+  roles: {{LISTA_ROLES}}
   storage:
     type: ephemeral
   resources:
     requests:
-      memory: 1Gi
-      cpu: 500m
+      memory: {{MEMORY_REQUEST}}
+      cpu: {{CPU_REQUEST}}
     limits:
-      memory: 2Gi
-      cpu: 1000m
+      memory: {{MEMORY_LIMIT}}
+      cpu: {{CPU_LIMIT}}
 ---
 apiVersion: kafka.strimzi.io/v1
 kind: Kafka
 metadata:
-  name: kafka-cluster
-  namespace: kafka-infra
+  name: {{NOMBRE}}
+  namespace: {{NAMESPACE}}
   labels:
     app.kubernetes.io/part-of: kafka-infra
   annotations:
-    strimzi.io/kraft: enabled
-    strimzi.io/node-pools: enabled
+    {{ANNOTATIONS}}
 spec:
   kafka:
-    version: 4.2.0
+    version: {{VERSION}}
     listeners:
       - name: plain
         port: 9092
