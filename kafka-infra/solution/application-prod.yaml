@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kafka-infra
+  namespace: openshift-gitops
+  labels:
+    app.kubernetes.io/part-of: kafka-infra
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    # Update this to your Git repository URL
+    repoURL: https://github.com/ocp4labs/kafka.git
+    targetRevision: main
+    path: kafka-infra/overlays/prod
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kafka-infra
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - PruneLast=true
+      - ApplyOutOfSyncOnly=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m

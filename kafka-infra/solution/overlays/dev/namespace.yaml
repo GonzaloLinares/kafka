@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kafka-infra-dev
+  labels:
+    app.kubernetes.io/part-of: kafka-infra
+    environment: dev
+
