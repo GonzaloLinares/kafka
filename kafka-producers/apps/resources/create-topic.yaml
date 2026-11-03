@@ -6,7 +6,7 @@ metadata:
   annotations:
     description: "AD482 AMQ Streams 1.7 Topic Template"
 objects:
-  - apiVersion: kafka.strimzi.io/v1beta2
+  - apiVersion: kafka.strimzi.io/v1
     kind: KafkaTopic
     metadata:
       name: "${TOPIC_NAME}"
@@ -26,7 +26,7 @@ parameters:
   - name: CLUSTER_NAME
     displayName: Cluster Name
     description: The name of the Kafka cluster
-    value: my-cluster
+    value: kafka-cluster
   - name: PARTITIONS
     displayName: Partitions
     description: Number of partitions for the topic
