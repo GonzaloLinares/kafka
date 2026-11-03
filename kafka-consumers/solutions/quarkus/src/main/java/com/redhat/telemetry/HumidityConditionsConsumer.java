@@ -11,8 +11,8 @@ public class HumidityConditionsConsumer {
     public HumidityStats stats = new HumidityStats();
 
     @Incoming("humidityConditions")
-    public void consume(int humidityValue) {
-        stats.add(humidityValue);
+    public void consume(String humidityValue) {
+        stats.add(Integer.parseInt(humidityValue));
         System.out.println("Received humidity value: " + humidityValue);
     }
 
